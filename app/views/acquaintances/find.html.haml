@@ -1,2 +1,5 @@
 %h1 Acquaintances#find
 %p Find me in app/views/acquaintances/find.html.haml
+
+= @infos.each do |key, value|
+  %div= "#{key}\t#{value}"

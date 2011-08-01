@@ -10,6 +10,9 @@ gem 'jquery-rails', '>= 1.0.3'
 gem 'haml-rails'
 gem 'rspec-rails'
 gem 'rake', '0.8.7'
+gem 'json'
+gem 'rest-graph'
+gem 'rest-client'
 
 # Use unicorn as the web server
 # gem 'unicorn'

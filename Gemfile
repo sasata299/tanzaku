@@ -9,6 +9,7 @@ gem 'mysql2', '< 0.3'
 gem 'jquery-rails', '>= 1.0.3'
 gem 'haml-rails'
 gem 'rspec-rails'
+gem 'rake', '0.8.7'
 
 # Use unicorn as the web server
 # gem 'unicorn'

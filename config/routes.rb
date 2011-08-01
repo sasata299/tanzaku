@@ -1,4 +1,7 @@
 Tanzaku::Application.routes.draw do
+  #get "acquaintances/find"
+  root :to => "acquaintances#find"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

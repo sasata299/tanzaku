@@ -1,0 +1,11 @@
+= form_for @friend do |f|
+  -if @friend.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@friend.errors.count, "error")} prohibited this friend from being saved:"
+      %ul
+        - @friend.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.text_field :profile_url, :size => 60
+    = f.submit 'Save'

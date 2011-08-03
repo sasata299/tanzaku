@@ -1,4 +1,6 @@
 Tanzaku::Application.routes.draw do
+  resources :friends
+
   #get "acquaintances/find"
   root :to => "acquaintances#find"
 

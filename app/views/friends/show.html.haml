@@ -1,0 +1,27 @@
+:css
+  th{
+    background-color:lightgray;
+    padding:5px;
+    text-align:right;
+  }
+  td{
+    padding-left:10px;
+  }
+
+%p#notice= notice
+
+%table
+  %tr
+    %th user_name
+    %td= @friend.user_name
+  %tr
+    %th profile_url
+    %td= @friend.profile_url
+  %tr
+    %th created_at
+    %td= @friend.created_at.to_s(:date)
+%div{:style => "margin-bottom:10px"}
+
+= link_to 'Edit', edit_friend_path(@friend)
+\|
+= link_to 'List', friends_path

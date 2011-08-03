@@ -1,0 +1,19 @@
+%h1 Listing friends
+
+%table
+  %tr
+    %th
+    %th
+    %th
+    %th
+
+  - @friends.each do |friend|
+    %tr
+      %td{:style => "font-weight:bold;width:150px"}= friend.user_name
+      %td= link_to 'Show', friend
+      %td= link_to 'Edit', edit_friend_path(friend)
+      %td= link_to 'Destroy', friend, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New', new_friend_path

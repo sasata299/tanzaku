@@ -1,2 +1,11 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+$(function(){
+  //$(".post").click(function(){
+  //  FB.login(function(response){
+  //    if (response.perms) {
+  //      return true;
+  //    } else {
+  //      alert('You must allow to access facebook data.');
+  //    }
+  //  }, { perms: 'publish_stream' });
+  //});
+});

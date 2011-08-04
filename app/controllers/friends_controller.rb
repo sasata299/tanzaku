@@ -10,6 +10,12 @@ class FriendsController < ApplicationController
     end
   end
 
+  def post
+    friend = Friend.find(params[:id])
+    rest_graph.post("#{friend.user_id}/feed", :link => "http://twitter.com/sasata299", :message => "#{Time.now}")
+    redirect_to friends_url, :notice => "Successfuly posted"
+  end
+
   # GET /friends/1
   # GET /friends/1.xml
   def show

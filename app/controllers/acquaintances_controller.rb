@@ -3,7 +3,7 @@ class AcquaintancesController < ApplicationController
   def find
     my_friends_list = rest_graph.get('me/friends')["data"].map{|i| i["id"]}
 
-    if request.post?
+    if request.post? && params[:commit]
       # error handling for deserialize Method and Proc
       rest_graph.log_method = nil
       rest_graph.error_handler = 'dummy'

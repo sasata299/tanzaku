@@ -6,7 +6,6 @@ class AcquaintancesController < ApplicationController
       #rest_graph.post('me/feed', :message => "test_#{rand(10000)}")
       fetch_target_user_info
       @common_ids = @friends_list & my_friends_list
-      p @common_ids
 
       # TODO: send message
     end

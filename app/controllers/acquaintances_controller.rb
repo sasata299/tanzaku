@@ -52,7 +52,7 @@ class AcquaintancesController < ApplicationController
       end
     }
 
-    if (link = agent.page.link_with(:text => "他の友達を見る".toutf8))
+    if (link = agent.page.link_with(:text => "他の友達を見る"))
       link.click
       logger.debug agent.page.uri.to_s
       scraper(agent, agent.page.uri.to_s)

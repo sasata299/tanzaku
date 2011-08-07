@@ -1,10 +1,12 @@
 %h1 つながり短冊
+
+- if flash[:notice]
+  %div{:style => "margin-bottom:10px"}
+    %span{:style =>"background-color:lightyellow"}= flash[:notice]
+
 %p 会ってみたい人を教えてください
 
 = form_tag do
   = text_field_tag :profile_url, '', :size => 60
   = submit_tag "送信"
 
-- if @common_ids
-  - @common_ids.each do |id|
-    %div= id

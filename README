@@ -1,1 +1,4 @@
-EMAIL=xxx PASS=xxx FACEBOOK_APP_ID=xxx FACEBOOK_APP_SECRET=xxx rails server
+FACEBOOK_APP_ID=xxx FACEBOOK_APP_SECRET=xxx rails server
+
+# for delayed_job
+EMAIL=xxx PASS=xxx rake jobs:work -e production start

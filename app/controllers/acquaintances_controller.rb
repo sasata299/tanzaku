@@ -5,8 +5,7 @@ class AcquaintancesController < ApplicationController
 
     if request.post? && params[:commit]
       # error handling for deserialize Method and Proc
-      rest_graph.log_method = nil
-      rest_graph.error_handler = 'dummy'
+      rest_graph.lighten!
 
       Delayed::Job.enqueue(ScraperJob.new(my_friends_list, rest_graph, params[:profile_url]), 0, 1.minute.from_now)
 

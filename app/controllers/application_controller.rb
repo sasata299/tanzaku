@@ -10,5 +10,9 @@ class ApplicationController < ActionController::Base
 
   def setup
     rest_graph_setup(:auto_authorize => true, :write_cookies => true)
+
+    if params[:code]
+      redirect_to "http://apps.facebook.com/tanzaku-staging"
+    end
   end
 end

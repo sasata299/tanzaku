@@ -8,8 +8,7 @@ module EnvDefaults
   end
 
   def default_auto_authorize_scope
-    "publish_stream"
-    #"publish_stream,manage_pages,offline_access,email"
+    "publish_stream,email"
   end
 end
 

@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   include RestGraph::RailsUtil
 
   before_filter :setup
-  helper_method :current_user
 
   private
 
@@ -12,7 +11,9 @@ class ApplicationController < ActionController::Base
     rest_graph_setup(:auto_authorize => true, :write_cookies => true)
 
     if params[:code]
-      redirect_to "http://apps.facebook.com/tanzaku-staging"
+      top_url = "http://apps.facebook.com/tanzaku-staging/"
+      rest_graph.post("me/feed", :message => "つながり短冊を利用し始めました", :link => top_url)
+      redirect_to top_url
     end
   end
 end

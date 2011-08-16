@@ -1,9 +1,13 @@
 # -*- coding: utf-8 -*-
 class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
-  def perform
-    fetch_target_user_info(my_friends_list)
-    common_ids = @friends_list & my_friends_list
+  attr_reader :target_user
 
+  def get_common_user_ids
+    fetch_target_user_info(my_friends_list)
+  end
+
+  def perform
+    common_ids = fetch_target_user_info(my_friends_list)
     rest_graph.post('me/feed', :message => "common user found: #{common_ids.join(', ')}")
   end
 
@@ -31,9 +35,11 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
     else
       case profile_url
       when /profile\.php\?id=([^&]+)/
-        target_url = "http://m.facebook.com/friends.php?id=#{$1}"
+        @target_user = rest_graph.get($1)
+        target_url = "http://m.facebook.com/friends.php?id=#{@target_user["id"]}"
       when %r!facebook\.com/([^\?]+)!
-        target_url = "http://m.facebook.com/friends.php?id=#{rest_graph.get($1)["id"]}"
+        @target_user = rest_graph.get($1)
+        target_url = "http://m.facebook.com/friends.php?id=#{@target_user["id"]}"
       end
     end
     agent.get(target_url)

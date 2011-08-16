@@ -15,8 +15,15 @@ class ApplicationController < ActionController::Base
     rest_graph_setup(:auto_authorize => true, :write_cookies => true)
 
     if params[:code]
-      rest_graph.post("me/feed", :message => "つながり短冊を利用し始めました", :link => facebook_app_url)
-      AuthorizedUser.store rest_graph.get('me')
+      #rest_graph.post("me/feed", :message => "つながり短冊を利用し始めました", :link => facebook_app_url)
+
+      user = rest_graph.get('me')
+      AuthorizedUser.store(user)
+
+      if queue = MailQueue.first(:conditions => ["common_user_id = ?", user["id"]])
+        deliver(user["email"], rest_graph.get(queue.user_id), rest_graph.get(queue.target_user_id))
+        queue.destroy
+      end
 
       redirect_to facebook_app_url
     end

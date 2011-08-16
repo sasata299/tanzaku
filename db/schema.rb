@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815211521) do
+ActiveRecord::Schema.define(:version => 20110815230336) do
 
   create_table "authorized_users", :force => true do |t|
     t.string   "user_name"
@@ -39,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20110815211521) do
     t.string   "user_id"
     t.string   "user_name"
     t.string   "profile_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "mail_queues", :force => true do |t|
+    t.string   "common_user_id"
+    t.string   "user_id"
+    t.string   "target_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

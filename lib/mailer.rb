@@ -1,14 +1,14 @@
 module Mailer
-  def deliver(user, target_user)
-    ses = ActionWebService::SES::Base.new(
+  def deliver(to_email, user, target_user)
+    ses = AWS::SES::Base.new(
       :access_key_id     => acceess_key_id,
       :secret_access_key => secret_access_key
     )
     ses.send_email(
       :subject => "つながり検索からのお知らせです",
-      :tet_body => "#{user["name"]}さんが#{target_user["name"]}さんと会いたいようです",
+      :text_body => body(user, target_user),
       :source => from_email,
-      :to => %W(user["email"])
+      :to => to_email
     )
   end
 
@@ -24,5 +24,9 @@ module Mailer
 
   def from_email
     ENV["FROM_EMAIL"]
+  end
+
+  def body(user, target_user)
+    "#{user["last_name"]} #{user["first_name"]}さんが#{target_user["last_name"]} #{target_user["first_name"]}さんと会いたいようです。"
   end
 end

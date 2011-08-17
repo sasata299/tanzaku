@@ -30,7 +30,7 @@ class AcquaintancesController < ApplicationController
       end
 
       #Delayed::Job.enqueue(ScraperJob.new(my_friends_list, rest_graph, params[:profile_url]), 0, 1.minute.from_now)
-      redirect_to root_path, :notice => "処理を受け付けました"
+      redirect_to root_path, :notice => true
     end
   end
 end

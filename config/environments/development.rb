@@ -24,5 +24,7 @@ Tanzaku::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 
   config.log_level = :debug
+
+  config.facebook_app_url = "http://apps.facebook.com/tanzaku-staging/"
 end
 

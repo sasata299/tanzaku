@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Mailer
   def deliver(to_email, user, target_user)
     ses = AWS::SES::Base.new(

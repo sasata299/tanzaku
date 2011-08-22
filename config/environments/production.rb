@@ -46,4 +46,6 @@ Tanzaku::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.facebook_app_url = "http://apps.facebook.com/tanzaku-staging/"
 end

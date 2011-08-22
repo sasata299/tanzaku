@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
+  include Mailer
+
   attr_reader :target_user
 
   def perform

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   include RestGraph::RailsUtil
+  include Mailer
 
   before_filter :setup
 

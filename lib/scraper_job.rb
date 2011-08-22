@@ -3,7 +3,7 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
   attr_reader :target_user
 
   def perform
-    user_id = get_common_user_id
+    user_id = get_common_user_id(my_friends_list)
     email = AuthorizedUser.find_by_user_id(user_id).try(:email)
     me = rest_graph.get('me')
     if email

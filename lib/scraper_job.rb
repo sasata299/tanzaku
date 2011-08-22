@@ -3,23 +3,22 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
   attr_reader :target_user
 
   def perform
-    get_common_user_ids.each do |user_id|
-      email = AuthorizedUser.find_by_user_id(user_id).try(:email)
-      me = rest_graph.get('me')
-      if email
-        deliver(email, me, target_user) # 共通の知り合いにメールを送る
-      else
-        rest_graph.post(
-          "#{user_id}/feed", 
-          :message => "#{name(me)}さんがあなたの友達の誰かと知り合いになりたがっています。あなたにだけメールでこっそりと教えるのでここから登録をお願いします。", 
-          :link => Tanzaku::Application.config.facebook_app_url
-        )
-        MailQueue.create(
-          :common_user_id => user_id,
-          :user_id => me["id"],
-          :target_user_id => target_user["id"]
-        )
-      end
+    user_id = get_common_user_id
+    email = AuthorizedUser.find_by_user_id(user_id).try(:email)
+    me = rest_graph.get('me')
+    if email
+      deliver(email, me, target_user) # 共通の知り合いにメールを送る
+    else
+      rest_graph.post(
+        "#{user_id}/feed", 
+        :message => "#{name(me)}さんがあなたの友達の誰かと知り合いになりたがっています。あなたにだけメールでこっそりと教えるのでここから登録をお願いします。", 
+        :link => Tanzaku::Application.config.facebook_app_url
+      )
+      MailQueue.create(
+        :common_user_id => user_id,
+        :user_id => me["id"],
+        :target_user_id => target_user["id"]
+      )
     end
   end
 
@@ -27,11 +26,7 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
     "#{user['last_name']} #{user['first_name']}"
   end
 
-  def get_common_user_ids
-    fetch_target_user_info(my_friends_list)
-  end
-
-  def fetch_target_user_info(my_friends_list)
+  def get_common_user_id(my_friends_list)
     @friends_list = []
 
     agent = Mechanize.new

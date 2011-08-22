@@ -1,8 +1,8 @@
 module Mailer
   def deliver(to_email, user, target_user)
     ses = AWS::SES::Base.new(
-      :access_key_id     => acceess_key_id,
-      :secret_access_key => secret_access_key
+      :access_key_id     => Tanzaku::Application.config.acceess_key_id,
+      :secret_access_key => Tanzaku::Application.config.secret_access_key
     )
     ses.send_email(
       :subject => "つながり短冊からのお知らせです",
@@ -14,16 +14,8 @@ module Mailer
 
   private
 
-  def acceess_key_id
-    ENV["ACCESS_KEY_ID"]
-  end
-
-  def secret_access_key
-    ENV["SECRET_ACCESS_KEY"]
-  end
-
   def from_email
-    %Q!"#{encode("つながり短冊")}" <#{ENV["FROM_EMAIL"]}>!
+    %Q!"#{encode("つながり短冊")}" <#{Tanzaku::Application.config.from_email}>!
   end
 
   def body(user, target_user)

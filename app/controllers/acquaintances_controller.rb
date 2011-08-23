@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class AcquaintancesController < ApplicationController
   def find
     my_friends_list = rest_graph.get('me/friends')["data"].map{|i| i["id"]}

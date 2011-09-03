@@ -14,19 +14,18 @@
 
 %h1 つながり短冊
 
-
 - if flash[:notice]
   .notice あなたの願いはたしかに受け取りました。願いが叶いますように…
   = image_tag "tanzaku.jpg"
 
   %div{:style => "margin-top:10px"}= link_to "他にも会いたい人がいるので続けて登録する", root_path 
 - else
-  .description つながり短冊とは、あなたが「会いたい！」と思っている人を指定すると、<span style="font-size:1.1em;font-weight:bold">あたな（○○さん）</span> と <span style="font-size:1.1em;font-weight:bold">あなたが会いたいと思っている人（xxさん）</span>との共通の知り合いを見つけてきて、その人にこっそりと「○○さんとxxさんが会いたいんだって！」と伝えてくれるサービスです。つながり短冊を利用することで、<span style='color:red;font-size:1.1em;font-weight:bold'>ネット上でしか知らない人とリアルで会える</span>可能性がグッと高くなります。
+  .description つながり短冊とは、あなたが会いたいと思っている人を指定すると、<span style="font-size:1.1em;font-weight:bold">あたな（○○さん）</span> と <span style="font-size:1.1em;font-weight:bold">あなたが会いたいと思っている人（xxさん）</span>との共通の知り合いにこっそりと「○○さんがxxさんに会いたいんだって！」と伝えてくれるサービスです。つながり短冊を利用することで、<span style='color:red;font-size:1.1em;font-weight:bold'>ネット上でしか知らない人とリアルで会える</span>可能性がグッと高くなります。
 
   %p{:style => "margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
   = form_tag do
     = text_field_tag :profile_url, '', :size => 70, :placeholder => 'http://www.facebook.com/sasata299/'
-    = submit_tag "送信"
+    = submit_tag "に会いたい"
 
 :javascript
   $('input[placeholder]').placeholder();

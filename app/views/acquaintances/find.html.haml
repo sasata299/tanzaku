@@ -1,8 +1,12 @@
 :css
+  #logo{
+    margin:20px 0;
+  }
   .description{
     background-color:#e6eae6;
-    padding:3px;
+    padding:5px;
     font-size:0.9em;
+    width:85%;
   }
   .notice{
     border:1px solid #a0d8ef;
@@ -12,7 +16,8 @@
     margin-bottom:10px;
   }
 
-%h1 つながり短冊
+#logo
+  = image_tag 'tanzaku_logo.png'
 
 - if flash[:notice]
   .notice あなたの願いはたしかに受け取りました。願いが叶いますように…
@@ -22,7 +27,7 @@
 - else
   .description つながり短冊とは、あなたが会いたいと思っている人を指定すると、<span style="font-size:1.1em;font-weight:bold">あたな（○○さん）</span> と <span style="font-size:1.1em;font-weight:bold">あなたが会いたいと思っている人（xxさん）</span>との共通の知り合いにこっそりと「○○さんがxxさんに会いたいんだって！」と伝えてくれるサービスです。つながり短冊を利用することで、<span style='color:red;font-size:1.1em;font-weight:bold'>ネット上でしか知らない人とリアルで会える</span>可能性がグッと高くなります。
 
-  %p{:style => "margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
+  %p{:style => "font-weight:bold;margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
   = form_tag do
     = text_field_tag :profile_url, '', :size => 70, :placeholder => 'http://www.facebook.com/sasata299/'
     = submit_tag "に会いたい"

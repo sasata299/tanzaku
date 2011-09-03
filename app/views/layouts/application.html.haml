@@ -1,21 +1,20 @@
 !!!
 %html
   %head
-    %title Tanzaku
+    %title つながり短冊
     = stylesheet_link_tag :all
     = javascript_include_tag :defaults
     = csrf_meta_tag
+    %meta{:property => "og:title", :content => "つながり短冊"}
+    %meta{:property => "og:type", :content => "website"}
+    %meta{:property => "og:url", :content => "http://tanzaku-staging.heroku.com/"}
+    %meta{:property => "og:image", :content => "http://tanzaku-staging.heroku.com/images/tanzaku.jpg"}
+    %meta{:property => "og:description", :content => "つながり短冊は、あなたとあなたの会いたい人（xxさん）との共通の友達を探しだし、あなたがxxさんに会いたいことを伝えるだけのシンプルなサービスです。あなたもつながり短冊を利用するとネット上でしか知らないあの人にリアルで会えるかもしれません :-)"}
   %body{:data => {:url => Tanzaku::Application.config.facebook_app_url}}
     = javascript_include_tag 'redirector'
     = yield
 
-#fb-root
-:javascript
-  window.fbAsyncInit = function() {
-    FB.init({appId: '#{RestGraph.default_app_id}', status: true, cookie: true, xfbml: true});
-  };
-  (function() {
-    var e = document.createElement('script'); e.async = true;
-    e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js';
-    document.getElementById('fb-root').appendChild(e);
-  }());
+<div id="fb-root" style="margin-top:30px"></div>
+<script src="http://connect.facebook.net/en_US/all.js#appId=260908853929685&amp;xfbml=1"></script>
+<div style="float:right"><fb:like href="http://tanzaku-staging.heroku.com" send="true" width="450" show_faces="true" font=""></fb:like></div>
+<div style="clear:right"></div>

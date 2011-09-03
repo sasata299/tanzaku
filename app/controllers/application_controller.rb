@@ -12,8 +12,6 @@ class ApplicationController < ActionController::Base
     rest_graph_setup(:auto_authorize => true, :write_cookies => true)
 
     if params[:code]
-      #rest_graph.post("me/feed", :message => "つながり短冊を利用し始めました", :link => Tanzaku::Application.config.facebook_app_url)
-
       user = rest_graph.get('me')
       AuthorizedUser.store(user)
 

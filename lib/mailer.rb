@@ -19,7 +19,16 @@ module Mailer
   end
 
   def body(user, target_user)
-    "#{user["last_name"]} #{user["first_name"]}さんが#{target_user["last_name"]} #{target_user["first_name"]}さんと会いたいようです。"
+    <<-EOF
+    こんにちは。つながり短冊からのお知らせです。
+
+    #{user["last_name"]} #{user["first_name"]}さんが#{target_user["last_name"]} #{target_user["first_name"]}さんと会いたいようです。
+    同じイベントに参加する際にはぜひ紹介してあげましょう。
+
+    ---
+    つながり短冊
+    #{Tanzaku::Application.config.tanzaku_url}
+    EOF
   end
 
   def encode(subject)

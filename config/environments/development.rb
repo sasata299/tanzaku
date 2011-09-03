@@ -26,5 +26,5 @@ Tanzaku::Application.configure do
   config.log_level = :debug
 
   config.facebook_app_url = "http://apps.facebook.com/tanzaku-staging/"
+  config.tanzaku_url = "http://tanzaku-staging.heroku.com/"
 end
-

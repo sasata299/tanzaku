@@ -21,7 +21,7 @@
 
 - if flash[:notice]
   .notice あなたの願いはたしかに受け取りました。願いが叶いますように…
-  = image_tag "tanzaku.jpg"
+  = image_tag "tanzaku.jpg", :size => "500x234"
 
   %div{:style => "margin-top:10px"}= link_to "他にも会いたい人がいるので続けて登録する", root_path 
 - else

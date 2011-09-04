@@ -1,6 +1,6 @@
 :css
   #logo{
-    margin:20px 0;
+    margin:30px 0 20px 0;
   }
   .description{
     background-color:#e6eae6;
@@ -25,12 +25,15 @@
 
   %div{:style => "margin-top:10px"}= link_to "他にも会いたい人がいるので続けて登録する", root_path 
 - else
-  .description つながり短冊とは、あなたが会いたいと思っている人を指定すると、<span style="font-size:1.1em;font-weight:bold">あたな（○○さん）</span> と <span style="font-size:1.1em;font-weight:bold">あなたが会いたいと思っている人（xxさん）</span>との共通の知り合いにこっそりと「○○さんがxxさんに会いたいんだって！」と伝えてくれるサービスです。つながり短冊を利用することで、<span style='color:red;font-size:1.1em;font-weight:bold'>ネット上でしか知らない人とリアルで会える</span>可能性がグッと高くなります。
+  .description あなたが会いたいと思っている人を指定すると、<span style="font-size:1.1em;font-weight:bold">あたな（○○さん）</span> と <span style="font-size:1.1em;font-weight:bold">あなたが会いたいと思っている人（xxさん）</span>との共通の知り合いにこっそりと「○○さんがxxさんに会いたいんだって！」と伝えてくれるサービスです。つながり短冊を利用することで、<span style='color:red;font-size:1.1em;font-weight:bold'>ネット上でしか知らない人とリアルで会える</span>可能性がグッと高くなります。
 
   %p{:style => "font-weight:bold;margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
   = form_tag do
-    = text_field_tag :profile_url, '', :size => 70, :placeholder => 'http://www.facebook.com/sasata299/'
-    = submit_tag "に会いたい"
+    %table
+      %tr
+        %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"
+        %td= text_field_tag :profile_url, '', :size => 55, :style => "font-size:120%;margin-top:5px", :placeholder => 'http://www.facebook.com/sasata299/'
+        %td= submit_tag "に会いたい", :style => "margin-top:5px", :onclick => "var v = $('#profile_url').val(); if (v == '') { alert('プロフィールページのURLを入力してください'); return false; } else { return true; }"
 
 :javascript
   $('input[placeholder]').placeholder();

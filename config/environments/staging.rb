@@ -26,5 +26,5 @@ Tanzaku::Application.configure do
   config.log_level = :debug
 
   config.facebook_app_url = "http://apps.facebook.com/tanzaku-staging/"
-  config.logo_image = "http://localhost:3000/images/tanzaku_logo.png"
+  config.logo_image = "http://tanzaku-staging.heroku.com/images/tanzaku_logo.png"
 end

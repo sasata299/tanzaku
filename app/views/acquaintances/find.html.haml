@@ -18,6 +18,18 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
   }
+  #footer {
+    text-align:center;
+    margin-top:30px;
+    color:silver;
+  }
+  #footer a {
+    color:silver;
+  }
+  #footer a:hover {
+    background-color:white;
+    color:gray;
+  }
 
 #logo
   .left{:style => "width:280px"}= image_tag 'tanzaku_logo.png'
@@ -40,6 +52,8 @@
       %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"
       %td= text_field_tag :profile_url, '', :style => "font-size:120%;margin-top:5px;width:500px", :placeholder => 'http://www.facebook.com/sasata299/'
       %td= submit_tag "に会いたい", :style => "margin-top:5px", :onclick => "var v = $('#profile_url').val(); if (v == '') { alert('プロフィールページのURLを入力してください'); return false; } else { return true; }"
+
+#footer= raw "created by #{link_to '@sasata299', 'http://twitter.com/sasata299', :target => '_blank'}, special thanks ©naoworks"
 
 :javascript
   $('input[placeholder]').placeholder();

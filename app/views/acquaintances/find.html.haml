@@ -32,7 +32,7 @@
   }
 
 #logo
-  .left{:style => "width:280px"}= image_tag 'tanzaku_logo.png'
+  .left{:style => "width:280px"}= link_to image_tag('tanzaku_logo.png'), Tanzaku::Application.config.facebook_app_url
   .left
     %fb:like{:href => "#{root_url}", :send => "false", :width => "450", :show_faces => "true"}
   .clear

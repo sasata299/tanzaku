@@ -1,39 +1,42 @@
 :css
-  #logo{
-    margin:30px 0 20px 0;
+  #logo {
+    margin:40px 0 20px 0;
   }
-  .description{
-    background-color:#e6eae6;
-    padding:5px;
-    font-size:0.9em;
-    width:85%;
+  .left {
+    float:left;
   }
-  .notice{
+  .clear {
+    clear:left;
+  }
+  .notice {
     border:1px solid #a0d8ef;
-    background-color:#bce2e8;
-    padding:3px;
-    width:80%;
-    margin-bottom:10px;
+    background-color:#f7fcfe;
+    padding:5px;
+    width:70%;
+    margin-bottom:20px;
   }
 
 #logo
-  = image_tag 'tanzaku_logo.png'
+  .left{:style => "width:280px"}= image_tag 'tanzaku_logo.png'
+  .left
+    %fb:like{:href => "#{root_url}", :send => "false", :width => "450", :show_faces => "true"}
+  .clear
 
 - if flash[:notice]
-  .notice あなたの願いはたしかに受け取りました。願いが叶いますように…
-  = image_tag "tanzaku.jpg", :size => "500x234"
+  .notice
+    あなたの願いはたしかに受け取りました。
+    = image_tag flash[:target_user_image]
+    さんに会えますように…
 
-  %div{:style => "margin-top:10px"}= link_to "他にも会いたい人がいるので続けて登録する", root_path 
-- else
-  .description あなたが会いたいと思っている人を指定すると、<span style="font-size:1.1em;font-weight:bold">あたな（○○さん）</span> と <span style="font-size:1.1em;font-weight:bold">あなたが会いたいと思っている人（xxさん）</span>との共通の知り合いにこっそりと「○○さんがxxさんに会いたいんだって！」と伝えてくれるサービスです。つながり短冊を利用することで、<span style='color:red;font-size:1.1em;font-weight:bold'>ネット上でしか知らない人とリアルで会える</span>可能性がグッと高くなります。
+= image_tag 'tanzaku_description.jpg', :size => '650x280'
 
-  %p{:style => "font-weight:bold;margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
-  = form_tag do
-    %table
-      %tr
-        %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"
-        %td= text_field_tag :profile_url, '', :size => 55, :style => "font-size:120%;margin-top:5px", :placeholder => 'http://www.facebook.com/sasata299/'
-        %td= submit_tag "に会いたい", :style => "margin-top:5px", :onclick => "var v = $('#profile_url').val(); if (v == '') { alert('プロフィールページのURLを入力してください'); return false; } else { return true; }"
+%p{:style => "font-weight:bold;margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
+= form_tag do
+  %table
+    %tr
+      %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"
+      %td= text_field_tag :profile_url, '', :style => "font-size:120%;margin-top:5px;width:500px", :placeholder => 'http://www.facebook.com/sasata299/'
+      %td= submit_tag "に会いたい", :style => "margin-top:5px", :onclick => "var v = $('#profile_url').val(); if (v == '') { alert('プロフィールページのURLを入力してください'); return false; } else { return true; }"
 
 :javascript
   $('input[placeholder]').placeholder();

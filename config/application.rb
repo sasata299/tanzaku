@@ -40,6 +40,7 @@ module Tanzaku
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
+    # For AWS SES (Simple Email Service) parameters
     config.from_email = ENV["FROM_EMAIL"]
     config.secret_access_key = ENV["SECRET_ACCESS_KEY"]
     config.acceess_key_id = ENV["ACCESS_KEY_ID"]

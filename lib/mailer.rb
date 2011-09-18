@@ -33,7 +33,7 @@ module Mailer
 
     ---
     つながり短冊
-    #{Tanzaku::Application.config.tanzaku_url}
+    #{root_url}
     EOF
   end
 

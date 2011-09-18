@@ -11,8 +11,8 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url)
     else
       rest_graph.post(
         "#{common_user_id}/feed", 
-        :message => "#{name(me)}さんがあなたの友達の誰かと知り合いになりたがっています。あなたにだけメールでこっそりと教えるのでここから登録をお願いします。", 
-        :link => Tanzaku::Application.config.tanzaku_url
+        :message => "あなたの友達の誰かが、あなたの友達の誰かと会いたがっています。あなたにだけメールでこっそりと教えるのでここから登録をお願いします。", 
+        :link => root_url
       )
       MailQueue.create(
         :common_user_id => common_user_id,

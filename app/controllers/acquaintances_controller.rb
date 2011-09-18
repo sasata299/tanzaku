@@ -13,10 +13,11 @@ class AcquaintancesController < ApplicationController
 
       case params[:profile_url]
         when /profile\.php\?id=([^&]+)/
-        flash[:target_user_image] = rest_graph.get($1, :fields => 'picture')["picture"]
+        flash[:target_user_image] = rest_graph.get($1, :fields => 'picture')['picture']
       when %r!facebook\.com/([^\?]+)!
-        flash[:target_user_image] = rest_graph.get($1, :fields => 'picture')["picture"]
+        flash[:target_user_image] = rest_graph.get($1, :fields => 'picture')['picture']
       end
+      flash[:target_user_name] = rest_graph.get($1)['name']
 
       redirect_to find_path, :notice => true
     end

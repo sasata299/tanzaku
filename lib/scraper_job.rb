@@ -11,7 +11,7 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url, :root
     else
       rest_graph.post(
         "#{common_user_id}/feed", 
-        :message => "#{name(me)}さんがあなたの友達の誰かと会いたいようです。メールであなたにだけ教えるのでここからアプリの許可をお願いします。", 
+        :message => "#{me['name']}さんがあなたの友達の誰かと会いたいようです。メールであなたにだけ教えるのでここからアプリの許可をお願いします。", 
         :link => root_url
       )
       MailQueue.create(
@@ -20,10 +20,6 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url, :root
         :target_user_id => target_user["id"]
       )
     end
-  end
-
-  def name(user)
-    "#{user['last_name']} #{user['first_name']}"
   end
 
   def get_common_user_id(my_friends_list)

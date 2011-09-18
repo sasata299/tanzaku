@@ -12,9 +12,9 @@
   .notice {
     border:1px solid #336600;
     background-color:#badcad;
-    padding:5px 5px 2px 5px;
+    padding:5px 5px 2px 10px;
     width:70%;
-    margin:30px 0;
+    margin:20px 0 30px 0;
     border-radius: 5px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -37,16 +37,16 @@
   }
 
 #logo
-  .left{:style => "width:280px"}= link_to image_tag('tanzaku_logo.png'), root_path
+  .left{:style => "width:260px"}= link_to image_tag('tanzaku_logo.png'), root_path
   .left
     %fb:like{:href => "#{root_url}", :send => "false", :width => "450", :show_faces => "true"}
   .clear
 
 - if flash[:notice]
   .notice
-    あなたの願いはたしかに受け取りました。
-    = image_tag flash[:target_user_image], :class => "vertical-align:middle;height:20px;width:20px;margin-bottom:5px"
-    さんに会えますように…
+    あなたの願いは受け取りました。
+    = image_tag flash[:target_user_image], :style => "vertical-align:middle;height:20px;width:20px;margin-bottom:5px"
+    = " (#{flash[:target_user_name]}さん) に会えますように…"
 
 = image_tag 'tanzaku_description.jpg', :size => '650x280'
 

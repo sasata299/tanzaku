@@ -1,5 +1,6 @@
-つながり短冊についての説明を書く
+つながり短冊とは、ネット（オンライン）でしか知らない人と、リアル（オフライン）で会うためのツールです。
+共通の知り合いを探してあなたが会いたがっていることを伝えてくれます。
 
 # for delayed_job
-heroku rake jobs:work --app tanzaku-staging
-heroku rake jobs:clear --app tanzaku-staging
+heroku rake jobs:work --app tanzaku
+heroku rake jobs:clear --app tanzaku

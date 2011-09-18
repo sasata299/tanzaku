@@ -5,7 +5,7 @@ module Mailer
       :secret_access_key => Tanzaku::Application.config.secret_access_key
     )
     ses.send_email(
-      :subject => "#{name(user)}さんの願い事が届きました！",
+      :subject => "#{name(user)}さんの願い事をお届けします！",
       :text_body => body(user, target_user),
       :source => from_email,
       :to => to_email
@@ -20,16 +20,18 @@ module Mailer
 
   def body(user, target_user)
     <<-EOF
-    こんにちは。#{name(user)}さんがつながり短冊に願い事をしました。
+    こんにちは。つながり短冊からのお知らせです。
+    #{name(user)}さん (#{user['link']}) がつながり短冊に願い事をしました。
 
-    ┏━━━━━━━━━━━━━━━━━━━━━━┓
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
     　#{name(target_user)}さんに会いたい
-    ┗━━━━━━━━━━━━━━━━━━━━━━┛
+    　#{target_user['link']}
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 
-    あなたは#{name(user)}さんと#{name(target_user)}さん、どちらも知っていますよね？
+    あなたは#{name(user)}さんと#{name(target_user)}さん、どちらも知っていますよね。
     同じイベント/同じ場所にいる際にはぜひ紹介してあげましょう。
 
-    あなたの協力で、2人はオンラインのつながりからオフラインのつながりに。
+    あなたの協力で、2人はオンラインのつながりからオフラインのつながりに :-)
 
     ---
     つながり短冊

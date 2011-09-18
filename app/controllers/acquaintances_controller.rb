@@ -9,7 +9,7 @@ class AcquaintancesController < ApplicationController
       my_friends_list = rest_graph.get('me/friends')["data"].map{|i| i["id"]}
 
       rest_graph.lighten! # error handling for deserialize Method and Proc
-      Delayed::Job.enqueue(ScraperJob.new(my_friends_list, rest_graph, params[:profile_url]), 0, 1.minute.from_now)
+      Delayed::Job.enqueue(ScraperJob.new(my_friends_list, rest_graph, params[:profile_url], root_url), 0, 1.minute.from_now)
 
       case params[:profile_url]
         when /profile\.php\?id=([^&]+)/

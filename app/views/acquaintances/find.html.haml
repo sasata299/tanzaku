@@ -1,6 +1,6 @@
 :css
   #logo {
-    margin:40px 0 20px 0;
+    margin:50px 0 20px 0;
   }
   .left {
     float:left;
@@ -9,11 +9,14 @@
     clear:left;
   }
   .notice {
-    border:1px solid #a0d8ef;
-    background-color:#f7fcfe;
-    padding:5px;
+    border:1px solid #336600;
+    background-color:#badcad;
+    padding:8px 5px 5px 5px;
     width:70%;
-    margin-bottom:20px;
+    margin:30px 0;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
   }
 
 #logo
@@ -31,7 +34,7 @@
 = image_tag 'tanzaku_description.jpg', :size => '650x280'
 
 %p{:style => "font-weight:bold;margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
-= form_tag do
+= form_tag :action => 'find' do
   %table
     %tr
       %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"

@@ -8,10 +8,10 @@
     = csrf_meta_tag
     %meta{:property => "og:title", :content => "つながり短冊"}
     %meta{:property => "og:type", :content => "website"}
-    %meta{:property => "og:url", :content => Tanzaku::Application.config.tanzaku_url}
+    %meta{:property => "og:url", :content => root_url}
     %meta{:property => "og:image", :content => Tanzaku::Application.config.logo_image}
     %meta{:property => "og:description", :content => "会いたい人を短冊に書くだけで、ネットでしか知らないあの人とリアルで会えるかも！？"}
-  %body{:data => {:url => root_url}}
+  %body{:data => {:url => Tanzaku::Application.config.facebook_app_url}}
     = javascript_include_tag 'redirector'
     = yield
 

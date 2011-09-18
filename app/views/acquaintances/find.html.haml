@@ -1,6 +1,7 @@
 :css
   #logo {
     margin:50px 0 20px 0;
+    height:65px;
   }
   .left {
     float:left;
@@ -23,16 +24,20 @@
     margin-top:30px;
     color:silver;
   }
-  #footer a {
+  a {
     color:silver;
+    text-decoration:underline;
   }
-  #footer a:hover {
+  a:hover {
     background-color:white;
     color:gray;
   }
+  a img:hover {
+    text-decoration:none;
+  }
 
 #logo
-  .left{:style => "width:280px"}= link_to image_tag('tanzaku_logo.png'), Tanzaku::Application.config.facebook_app_url
+  .left{:style => "width:280px"}= link_to image_tag('tanzaku_logo.png'), root_path
   .left
     %fb:like{:href => "#{root_url}", :send => "false", :width => "450", :show_faces => "true"}
   .clear
@@ -45,7 +50,7 @@
 
 = image_tag 'tanzaku_description.jpg', :size => '650x280'
 
-%p{:style => "font-weight:bold;margin-top:30px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
+%p{:style => "font-weight:bold;margin-top:40px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
 = form_tag :action => 'find' do
   %table
     %tr

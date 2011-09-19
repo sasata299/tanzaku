@@ -11,6 +11,7 @@
     %meta{:property => "og:url", :content => root_url}
     %meta{:property => "og:image", :content => Tanzaku::Application.config.logo_image}
     %meta{:property => "og:description", :content => "会いたい人を短冊に書くだけで、ネットでしか知らないあの人とリアルで会えるかも！？"}
+    %meta{:property => "fb:app_id", :content => ENV["FACEBOOK_APP_ID"]}
   %body{:data => {:url => Tanzaku::Application.config.facebook_app_url}}
     = javascript_include_tag 'redirector'
     = yield

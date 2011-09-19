@@ -28,6 +28,9 @@
     color:silver;
     text-decoration:underline;
   }
+  a:visited {
+    color:silver;
+  }
   a:hover {
     background-color:white;
     color:gray;
@@ -39,26 +42,32 @@
 #logo
   .left{:style => "width:260px"}= link_to image_tag('tanzaku_logo.png'), root_path
   .left
-    %fb:like{:href => "#{root_url}", :send => "false", :width => "450", :show_faces => "true"}
+    %fb:like{:send => "false", :width => "450", :show_faces => "true"}
   .clear
 
 - if flash[:notice]
   .notice
-    あなたの願いは受け取りました。
+    つながり短冊にあなたの願い事が届きました。
     = image_tag flash[:target_user_image], :style => "vertical-align:middle;height:20px;width:20px;margin-bottom:5px"
     = " (#{flash[:target_user_name]}さん) に会えますように…"
 
 = image_tag 'tanzaku_description.jpg', :size => '650x280'
 
-%p{:style => "font-weight:bold;margin-top:40px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
-= form_tag :action => 'find' do
-  %table
-    %tr
-      %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"
-      %td= text_field_tag :profile_url, '', :style => "font-size:120%;margin-top:5px;width:500px", :placeholder => 'http://www.facebook.com/sasata299/'
-      %td= submit_tag "に会いたい", :style => "margin-top:5px", :onclick => "var v = $('#profile_url').val(); if (v == '') { alert('プロフィールページのURLを入力してください'); return false; } else { return true; }"
+- if cookies['auth']
+  %p{:style => "font-weight:bold;margin-top:40px"} あなたが会いたいと思っている人のプロフィールページを教えてください。
+  
+  = form_tag :action => 'find' do
+    %table
+      %tr
+        %td= image_tag 'tanzaku_icon.png', :size => '13x24', :style => "vertical-align:middle"
+        %td= text_field_tag :profile_url, '', :style => "font-size:120%;margin-top:5px;width:500px", :placeholder => 'http://www.facebook.com/sasata299/'
+        %td= submit_tag "に会いたい", :style => "margin-top:5px", :onclick => "var v = $('#profile_url').val(); if (v == '') { alert('プロフィールページのURLを入力してください'); return false; } else { return true; }"
+- else
+  %div{:style => "margin-top:30px;text-align:center"}
+    = image_tag 'warning.gif', :size => '16x16', :style => "vertical-align:middle;margin-bottom:5px"
+    = link_to 'はじめての方はこちらからアプリを認証してください', auth_path, {:style => "color:green"}
 
-#footer= raw "created by #{link_to '@sasata299', 'http://twitter.com/sasata299', :target => '_blank'}, special thanks ©naoworks"
+#footer= raw "created by #{link_to '@sasata299', 'http://twitter.com/sasata299', :target => '_blank'} and special thanks ©naoworks"
 
 :javascript
   $('input[placeholder]').placeholder();

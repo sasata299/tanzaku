@@ -20,6 +20,8 @@ class ApplicationController < ActionController::Base
         queue.destroy
       end
 
+      cookies['auth'] = {:value => '1', :expires => Time.parse('2030-01-01 00:00:00')}
+
       redirect_to Tanzaku::Application.config.facebook_app_url
     end
   end

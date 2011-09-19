@@ -3,8 +3,8 @@ Tanzaku::Application.routes.draw do
     get :post, :on => :member
   end
 
-  root :to => "acquaintances#auth"
-  match "/find" => "acquaintances#find", :as => "find", :via => %w(get post)
+  root :to => "acquaintances#find"
+  match "/auth" => "acquaintances#auth", :as => "auth", :via => %w(get post)
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

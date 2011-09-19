@@ -1,6 +1,7 @@
 class AcquaintancesController < ApplicationController
   def auth
-    rest_graph.get('me/friends') # for authentication
+    rest_graph.get('me') # for authentication
+    cookies['auth'] = {:value => '1', :expires => Time.parse('2030-01-01 00:00:00')}
     render :action => "find"
   end
 
@@ -19,7 +20,7 @@ class AcquaintancesController < ApplicationController
       end
       flash[:target_user_name] = rest_graph.get($1)['name']
 
-      redirect_to find_path, :notice => true
+      redirect_to root_path, :notice => true
     end
   end
 end

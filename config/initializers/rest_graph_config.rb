@@ -13,3 +13,9 @@ module EnvDefaults
 end
 
 RestGraph.send(:extend, EnvDefaults)
+
+module RestGraph::RailsUtil
+  def rest_graph_authorize_redirect
+    rest_graph_js_redirect(@rest_graph_authorize_url)
+  end
+end

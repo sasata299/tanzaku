@@ -13,7 +13,7 @@
     border:1px solid #336600;
     background-color:#badcad;
     padding:5px 5px 2px 10px;
-    width:70%;
+    width:600px;
     margin:20px 0 30px 0;
     border-radius: 5px;
     -moz-border-radius: 5px;
@@ -65,9 +65,9 @@
 - else
   %div{:style => "margin-top:30px;text-align:center"}
     = image_tag 'warning.gif', :size => '16x16', :style => "vertical-align:middle;margin-bottom:5px"
-    = link_to 'はじめての方はこちらからアプリを認証してください', auth_path, {:style => "color:green"}
+    = link_to 'はじめての方はこちらからアプリを許可してください', auth_path, {:style => "color:green"}
 
-#footer= raw "created by #{link_to '@sasata299', 'http://twitter.com/sasata299', :target => '_blank'} and special thanks ©naoworks"
+#footer= raw "created by #{link_to '@sasata299', 'http://twitter.com/sasata299', :target => '_blank'} and special thanks #{link_to '@naoworks', 'http://twitter.com/naoworks', :target => '_blank'}"
 
 :javascript
   $('input[placeholder]').placeholder();

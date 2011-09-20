@@ -5,6 +5,8 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url, :root
 
   def perform
     common_user_id = get_common_user_id(my_friends_list)
+    exit if common_user_id.blank?
+
     me = rest_graph.get('me')
     if email = AuthorizedUser.find_by_user_id(common_user_id).try(:email)
       deliver(email, me, target_user) # 共通の知り合いにメールを送る

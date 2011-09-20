@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     if user = User.find_by_user_name(name)
       user.user_id
     else
-      user_id = rest_graph.get(name)["id"]
+      user_id = rest_graph.get(name) ? rest_graph.get(name)["id"] : nil # rest_graph.get(name)がfalseのときがある…
       User.create(:user_name => name, :user_id => user_id) if user_id
 
       user_id

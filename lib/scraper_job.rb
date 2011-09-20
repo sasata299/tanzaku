@@ -38,7 +38,7 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url, :root
 
     scraper(agent)
 
-    (@friends_list & my_friends_list).sample
+    (@friends_list.compact & my_friends_list).sample
   end
 
   def scraper(agent, url=nil)

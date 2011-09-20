@@ -10,6 +10,7 @@ class ScraperJob < Struct.new(:my_friends_list, :rest_graph, :profile_url, :root
     me = rest_graph.get('me')
     if email = AuthorizedUser.find_by_user_id(common_user_id).try(:email)
       deliver(email, me, target_user) # 共通の知り合いにメールを送る
+      SendMailCounter.increment_counter('counter', 1)
     else
       rest_graph.post(
         "#{common_user_id}/feed", 

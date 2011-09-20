@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110815230336) do
+ActiveRecord::Schema.define(:version => 20110920233328) do
 
   create_table "authorized_users", :force => true do |t|
     t.string   "user_name"
@@ -47,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20110815230336) do
     t.string   "common_user_id"
     t.string   "user_id"
     t.string   "target_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "send_mail_counters", :force => true do |t|
+    t.integer  "counter"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

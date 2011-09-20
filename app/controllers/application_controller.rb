@@ -18,6 +18,7 @@ class ApplicationController < ActionController::Base
       if queue = MailQueue.first(:conditions => ["common_user_id = ?", user["id"]])
         deliver(user["email"], rest_graph.get(queue.user_id), rest_graph.get(queue.target_user_id))
         queue.destroy
+        SendMailCounter.increment_counter('counter', 1)
       end
 
       cookies['auth'] = {:value => '1', :expires => Time.parse('2030-01-01 00:00:00')}
